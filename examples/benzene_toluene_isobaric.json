@@ -1,0 +1,13 @@
+{
+  "task_type": "isobaric_Txy",
+  "model_id": "Ideal",
+  "components": [
+    "benzene",
+    "toluene"
+  ],
+  "pressure": 101325.0,
+  "temperature_range": [
+    353.0,
+    383.0
+  ]
+}

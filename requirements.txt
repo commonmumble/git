@@ -1,0 +1,11 @@
+﻿# thermo_engine —— 相平衡热力学模型适配器依赖清单
+# 安装方式：pip install -r D:\Codex\requirements.txt
+
+# 核心依赖
+thermo>=0.6.0            # 热力学计算库（PRMIX 等，仅 PR 适配器使用）
+pydantic>=2.0.0          # 数据校验与类型定义（核心依赖）
+numpy>=1.20.0            # 数值计算（核心依赖）
+pyyaml>=6.0              # YAML 配置文件解析
+
+# 测试依赖（可选）
+pytest>=7.0.0

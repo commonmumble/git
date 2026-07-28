@@ -1,0 +1,13 @@
+{
+  "task_type": "bubble_T",
+  "model_id": "Peng-Robinson",
+  "components": [
+    "methane",
+    "ethane"
+  ],
+  "pressure": 101325.0,
+  "composition": [
+    0.5,
+    0.5
+  ]
+}

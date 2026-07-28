@@ -1,0 +1,13 @@
+{
+  "task_type": "bubble_T",
+  "model_id": "NRTL",
+  "components": [
+    "ethanol",
+    "water"
+  ],
+  "pressure": 101325.0,
+  "composition": [
+    0.3,
+    0.7
+  ]
+}

@@ -1,0 +1,75 @@
+﻿# binary_params.yaml —— 二元交互参数配置模板
+# ==============================================
+# 用途：存储从文献收集的各体系二元交互参数。
+# 维护：夏鑫华（模型适用范围统筹）负责整理和更新。
+# 
+# 格式说明：
+#   Ideal/Raoult：无需二元参数
+#   Peng-Robinson：kij 矩阵（对称，对角元为 0）
+#   NRTL/UNIQUAC/Wilson：tau_coeffs 矩阵（Phase 4 时启用）
+#
+# 注意：当前 NRTL/UNIQUAC/Wilson 为 CONTRACT 状态，
+#       参数仅供模型卡文档使用，不参与计算。
+
+# ============================
+# PR / SRK 二元交互参数 (kij)
+# ============================
+# kij 是温度无关的对称矩阵元素
+# 来源：ChemSep PR kij 数据库、文献
+eos:
+  co2-methane:
+    kij: 0.09
+    source: "ChemSep PR kij database"
+  co2-ethane:
+    kij: 0.13
+    source: "ChemSep PR kij database"
+  methane-ethane:
+    kij: 0.0
+    source: "Ideal mixture assumption"
+  methane-propane:
+    kij: 0.012
+    source: "ChemSep PR kij database"
+  ethane-propane:
+    kij: 0.003
+    source: "ChemSep PR kij database"
+
+# ============================
+# NRTL 参数（Phase 4 使用）
+# ============================
+# tau_coeffs[i,j,:] = [a_ij, b_ij, e_ij, f_ij, g_ij, h_ij]
+# tau_ij = a_ij + b_ij/T + e_ij*ln(T) + f_ij*T
+# alpha_coeffs[i,j,:] = [c_ij, d_ij]
+# 标准形式只使用 a, b (b 单位为 K)
+nrtl:
+  ethanol-water:
+    tau_12: [3.46, -586.1, 0, 0, 0, 0]
+    tau_21: [-0.38, 229.1, 0, 0, 0, 0]
+    alpha: 0.3
+    source: "DECHEMA VLE Data Collection, Vol.1, Part 1"
+  acetone-water:
+    tau_12: [2.04, -420.7, 0, 0, 0, 0]
+    tau_21: [0.64, -163.8, 0, 0, 0, 0]
+    alpha: 0.3
+    source: "DECHEMA VLE Data Collection"
+  methanol-water:
+    tau_12: [1.77, -410.0, 0, 0, 0, 0]
+    tau_21: [-0.52, 184.0, 0, 0, 0, 0]
+    alpha: 0.3
+    source: "DECHEMA VLE Data Collection"
+
+# ============================
+# UNIQUAC 参数（Phase 4 使用）
+# ============================
+uniquac:
+  ethanol-water:
+    tau_12: [-0.18, 112.0, 0, 0, 0, 0]
+    tau_21: [1.58, -302.0, 0, 0, 0, 0]
+    r: [2.1055, 0.9200]
+    q: [1.9720, 1.4000]
+    source: "DECHEMA VLE Data Collection"
+  acetone-water:
+    tau_12: [0.47, -87.5, 0, 0, 0, 0]
+    tau_21: [1.35, -309.1, 0, 0, 0, 0]
+    r: [2.5735, 0.9200]
+    q: [2.3360, 1.4000]
+    source: "DECHEMA VLE Data Collection"
